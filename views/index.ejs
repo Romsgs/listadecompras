@@ -1,0 +1,12 @@
+<%- include('./header.partials.ejs') %>
+<main>
+  <title>que ta faltando?</title>
+
+  <% if (newItem) {%> <%= newItem%> <% } %>
+  <ul>
+    <% for(let item in data) { %>
+    <li>Item: <%= item %></li>
+    <% } %> 
+  </ul>
+</main>
+<%- include('./footer.partials.ejs') %>
