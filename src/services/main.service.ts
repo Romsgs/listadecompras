@@ -15,7 +15,10 @@ export class MainService {
 
   // Retrieve all items
   allItems = async () => {
-    return await this.prisma.item.findMany();
+    const response = await this.prisma.item.findMany();
+    console.log('response')
+    console.log(response)
+    return response
   };
 
   // Update an item

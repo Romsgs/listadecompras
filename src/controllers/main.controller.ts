@@ -7,6 +7,9 @@ export class Controller{
     return this.mainService.newItem(name, quantidade);
   }
   async getData() {
-    return this.mainService.allItems();
+    return await this.mainService.allItems();
+  }
+  async deleteById(id: string) {
+    return await this.mainService.deletedItem(id);
   }
 }

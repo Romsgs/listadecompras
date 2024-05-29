@@ -2,14 +2,19 @@
 <%- include('./header.partials.ejs') %>
 <main>
   <h1>Adicionar um item</h1>
-  <form action="/adcionarItem" method="post">
+  <form id="formulario" action="/adcionarItem" method="post">
     <div>
       <label for="nome">Nome:</label>
       <input type="text" id="nome" name="nome" required>
     </div>
     <div>
-      <label for="quantidade">Email:</label>
-      <input type="number" id="quantidade" name="quantidade" required>
+      <label for="quantidade">Quantidade:</label>
+      <input type="number" id="quantidade" name="quantidade" required>    
+    </div>
+    <div>
+      <label for="data-de-validade">data-de-validade:</label>
+      <input type="date" id="data-de-validade" name="data-de-validade">
+    
     </div>
     <button type="submit">adcionar</button>
   </form>
