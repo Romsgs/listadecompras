@@ -6,7 +6,8 @@ dotenv.config();
 import main_router from './src/routes/main.router';
 
 // ENV LOAD
-const PORT = process.env.PORT || 3000;
+const PORT =  3000;
+const HOST = '0.0.0.0';  // Adicionado para ouvir em todas as interfaces
 
 // Create express instance
 const app = express();
@@ -30,4 +31,4 @@ app.use(express.static('public'));
 app.use(main_router);
 
 // Run server
-app.listen(PORT, () => console.log(`Running server on http://localhost:${PORT}`));
+app.listen(PORT, HOST, () => console.log(`Running server on http://${HOST}:${PORT}`));

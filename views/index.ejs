@@ -6,17 +6,31 @@
     <p><%= response.result %>: <%= response.data.name %></p>
   <% } %>
 
-  <ul>
-    <% if (data.length > 0) { %> 
-      <% for(let item of data) { %>
-        <li>
-          Item: <%= item.name %> - qnt: <%= item.quantidade %>
-          <a class="deleteX" href="/delete/<%- item.id %>">X</a>
-        </li>
+  <table>
+    <thead>
+      <tr>
+        <th>Item</th>
+        <th>Quantidade</th>
+        <th>Editar</th>
+        <th>Deletar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if (data.length > 0) { %> 
+        <% for(let item of data) { %>
+          <tr>
+            <td><h3>☞  <%= item.name %></h3></td>
+            <td><%= item.quantidade %></td>
+            <td><a class="editar" href="/editForm/<%- item.id %>">✎</a></td>
+            <td><a class="deleteX" href="/delete/<%- item.id %>">X</a></td>
+          </tr>
+        <% } %>
+      <% } else { %>
+        <tr>
+          <td colspan="4"><h3>Lista vazia</h3></td>
+        </tr>
       <% } %>
-    <% } else { %>
-      <h3>lista vazia</h3>
-    <% } %>
-  </ul>
+    </tbody>
+  </table>
 </main>
 <%- include('./footer.partials.ejs') %>

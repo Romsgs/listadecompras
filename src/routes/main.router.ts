@@ -16,10 +16,21 @@ main_router.get('/', async (req: Request, res: Response) => {
 main_router.get('/addItemForm', async (req: Request, res: Response) => {
   res.render('addItemForm');
 });
+main_router.get('/editForm/:id', async (req: Request, res: Response) => {
 
+  const data = await controller.getById(req.params.id)
+  res.render('editForm', {data});
+});
 main_router.post('/adcionarItem', async (req: Request, res: Response) => {
   const {nome, quantidade} = req.body
   const response = await controller.newItem(nome, quantidade);
+  const data = await controller.getData();
+  res.render('index', { data, response: {data:response, result:'created'} });
+});
+main_router.post('/editarItem/:id', async (req: Request, res: Response) => {
+  const {nome, quantidade} = req.body
+  const id = req.params.id
+  const response = await controller.update(id, nome, quantidade);
   const data = await controller.getData();
   res.render('index', { data, response: {data:response, result:'created'} });
 });

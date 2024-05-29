@@ -20,12 +20,18 @@ export class MainService {
     console.log(response)
     return response
   };
-
+  // Retrieve by id
+  getById = async (id:string) => {
+    const response = await this.prisma.item.findFirst({where:{id}});
+    console.log('response')
+    console.log(response)
+    return response
+  };
   // Update an item
-  updatedItem = async (id: string) => {
+  updatedItem = async (id: string, name:string, quantidade:number) => {
     return await this.prisma.item.update({
       where: { id },
-      data: { quantidade: 15 },
+      data: { name, quantidade },
     });
   };
   // Delete an item
